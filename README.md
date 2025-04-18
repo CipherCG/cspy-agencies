@@ -12,7 +12,7 @@ This is a role-based application for CSPY Agencies. It includes the following fe
 ## Installation
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/cspy-agencies.git
+   git clone https://github.com/CipherCG/cspy-agencies.git
    cd cspy-agencies
    ```
 
