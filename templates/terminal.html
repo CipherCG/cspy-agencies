@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: Courier, monospace;
+        }
+        .container {
+            width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: black;
+            color: green;
+            border: 1px solid green;
+        }
+        button {
+            padding: 10px;
+            background-color: green;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+        .output {
+            background-color: black;
+            border: 1px solid green;
+            padding: 10px;
+            margin: 10px 0;
+            height: 200px;
+            overflow-y: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Terminal</h1>
+        <form method="POST">
+            <input type="text" name="command" placeholder="Enter command" required>
+            <button type="submit">Execute</button>
+        </form>
+        <div class="output">
+            <p>{{ output }}</p>
+        </div>
+        <a href="/role_menu" style="color: green;">Back to Menu</a>
+    </div>
+</body>
+</html>

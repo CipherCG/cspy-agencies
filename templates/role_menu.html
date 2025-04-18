@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Role Menu</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: Courier, monospace;
+        }
+        .menu {
+            text-align: center;
+        }
+        a {
+            color: green;
+            text-decoration: none;
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <h1>Welcome, {{ role }}</h1>
+        <a href="/nuke_launch">Nuke Launch</a>
+        <a href="/directory">Directory</a>
+        <a href="/terminal">Terminal</a>
+        {% if role == "Rank-Admin" %}
+        <a href="/user_creation_tool">User Creation Tool</a>
+        {% endif %}
+        <a href="/game_break">Game Break</a>
+        <a href="/logout">Log Out</a>
+    </div>
+</body>
+</html>

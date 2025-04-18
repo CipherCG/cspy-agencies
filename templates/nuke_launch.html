@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuke Launch</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nuke Launch</h1>
+    <form method="POST">
+        <label>Submit Launch Code:</label>
+        <input type="text" name="code" placeholder="Enter code (4-10 digits)" required>
+        <button type="submit" name="action" value="submit">Submit</button>
+    </form>
+
+    <h2>Existing Codes</h2>
+    <ul>
+        {% for code in codes %}
+        <li>
+            {{ code[1] }} (Created: {{ code[2] }})
+            <form method="POST" style="display:inline;">
+                <input type="hidden" name="code_id" value="{{ code[0] }}">
+                <button type="submit" name="action" value="delete">Delete</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Launch Nuke</h2>
+    <form method="POST">
+        <label>Select Nuke Type:</label>
+        <select name="nuke_type">
+            <option value="BABY">BABY</option>
+            <option value="BABY ATOM">BABY ATOM</option>
+            <option value="KAKARSI">KAKARSI</option>
+            <option value="ATOMIC BOMB">ATOMIC BOMB</option>
+            <option value="WORLD DESTROYER">WORLD DESTROYER</option>
+            <option value="DEATH BY GRENADE RAIN">DEATH BY GRENADE RAIN</option>
+        </select>
+        <label>Location:</label>
+        <input type="text" name="location" placeholder="Enter address" required>
+        <label>Protect surrounding area with a blast forcefield?</label>
+        <input type="radio" name="forcefield" value="yes" checked> Yes
+        <input type="radio" name="forcefield" value="no"> No
+        <button type="submit" name="action" value="launch">Launch</button>
+    </form>
+</body>
+</html>
