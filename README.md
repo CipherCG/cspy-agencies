@@ -1,78 +1,43 @@
-# CSPY Agencies Project
+## Building a Standalone Desktop Application (No Browser Required)
 
-## Description
-This is a role-based application for CSPY Agencies, designed for **offline use** as a standalone Windows executable. It includes:
+This project uses [PyWebview](https://pywebview.flowrl.com/) to create a native desktop app, bundling all HTML/CSS/JS and the SQLite database for offline use.
 
-- **Login System**: Role-based access for `Rank-User` and `Rank-Admin`.
-- **Nuke Launch**: Submit, delete, and launch codes.
-- **Directory**: View and edit user information based on role.
-- **Terminal**: Execute commands like `ipconfig` and `$$Crash_System$$`.
-- **User Creation Tool**: Admin-only feature to create new users.
-- **Game Break**: A cookie clicker game for fun.
-
-All HTML interface files and the initial SQL database schema are bundled within the EXE for full offline operation.
-
-## Building a Standalone Windows Executable
-
-### 1. Clone this repository
-```bash
-git clone https://github.com/CipherCG/cspy-agencies.git
-cd cspy-agencies
-```
-
-### 2. Install Python dependencies
-```bash
-pip install flask
-pip install pyinstaller
-```
-
-### 3. Initialize the database (first run only)
-The app uses a local SQLite database. You can initialize the database by running:
-```bash
-python app.py
-```
-This will create the SQLite database using `schema.sql`.
-
-### 4. Bundle as a Windows Executable
-Use PyInstaller to create a single EXE that includes all necessary files:
+### 1. Install requirements
 
 ```bash
-pyinstaller --onefile --add-data "templates;templates" --add-data "schema.sql;." app.py
-```
-- The `--onefile` flag bundles everything into a single EXE.
-- The `--add-data` flag ensures HTML templates and the SQL schema are included.
-
-> **Note:** On Windows, use `;` to separate source and destination. On Linux/Mac, use `:`.
-
-### 5. Running the EXE
-- After building, you’ll find your standalone EXE in the `dist` folder.
-- Double-click the EXE or run from the command line:
-  ```bash
-  dist\app.exe
-  ```
-- The app runs locally; open your browser to:
-  ```
-  http://127.0.0.1:5000
-  ```
-
-## File Structure
-```
-/cspy-agencies
-    ├── app.py
-    ├── templates/
-    │   ├── index.html
-    │   ├── login.html
-    │   ├── role_menu.html
-    │   ├── nuke_launch.html
-    │   ├── directory.html
-    │   ├── terminal.html
-    │   ├── user_creation_tool.html
-    │   ├── game_break.html
-    └── schema.sql
+pip install pywebview
 ```
 
-## Offline Usage
-The EXE bundles all HTML and SQL files internally. No need for an internet connection. All data remains local to your computer.
+### 2. (Optional) Initialize your SQLite database
 
-## License
-This project is licensed under the MIT License.
+If your app expects an existing database, run a setup script or let the app create it automatically on first start.
+
+### 3. Build with auto-py-to-exe
+
+Install and run auto-py-to-exe:
+
+```bash
+pip install auto-py-to-exe
+auto-py-to-exe
+```
+
+- **Script Location:** `app.py`
+- **Onefile:** checked
+- **Add Folders:** add the `templates` folder (Destination: `templates`)
+- **Add File:** add `schema.sql` (Destination: `.`) if needed
+- **Console Window:** Window Based
+
+Click "Convert .py to .exe". Your EXE will appear in the output directory.
+
+### 4. Run Your App
+
+Double-click the EXE—your app will open in its own window, with no browser or server required.
+
+---
+
+**All HTML/CSS/JS and the database are bundled inside the app for true offline, self-contained use.**
+
+---
+
+## Need sample code or help converting your Flask routes to PyWebview app logic?  
+Let me know which features you need help porting!
